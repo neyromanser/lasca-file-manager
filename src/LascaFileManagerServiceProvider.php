@@ -1,17 +1,9 @@
 <?php
 namespace Neyromanser\LascaFileManager;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class LascaFileManagerServiceProvider extends ServiceProvider {
-
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
 
     /**
      * Bootstrap the application events.
@@ -46,11 +38,18 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register(){
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'lasca-file-manager');
+        $this->mergeConfigFrom(__DIR__ . '/../config/lasca-file-manager.php', 'lasca-file-manager');
 
         $this->app->bind('lasca-file-manager', function () {
-            $kcfinder = new Kcfinder();
-            return $kcfinder;
+
+            /*
+            $glideImage = new GlideImage();
+
+            $glideImage
+                ->setSignKey($this->getSignKey(config('laravel-glide')))
+                ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
+
+            return $glideImage;*/
         });
 
         //parent::register();
