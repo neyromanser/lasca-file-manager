@@ -37,7 +37,7 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
         # $this->loadViewsFrom(__DIR__.'/path/to/views', 'courier');
         # return view('courier::view.name');
 
-        include __DIR__.'/routes.php';
+        //include __DIR__.'/routes.php';
     }
 
     /**
@@ -49,15 +49,8 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'lasca-file-manager');
 
         $this->app->bind('lasca-file-manager', function () {
-
-            /*
-            $glideImage = new GlideImage();
-
-            $glideImage
-                ->setSignKey($this->getSignKey(config('laravel-glide')))
-                ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
-
-            return $glideImage;*/
+            $kcfinder = new Kcfinder();
+            return $kcfinder;
         });
 
         //parent::register();
