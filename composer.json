@@ -1,0 +1,32 @@
+{
+  "name": "neyromanser/lasca-file-manager",
+  "description": "File manager",
+  //"homepage": "https://github.com/neyromanser/lasca-file-manager",
+  "keywords": [
+    "filemanager",
+    "file",
+    "manager",
+    "laravel"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "RaSta",
+      "email": "neyromanser@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "5.*",
+    "league/glide": "0.3.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "Neyromanser\\LascaFileManager": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}
