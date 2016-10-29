@@ -3,4 +3,5 @@
 
 ## Install     
 composer require neyromanser/lasca-file-manager    
-php artisan vendor:publish --provider="Vendor\Neyromanser\LascaFileManager\LascaFileManagerServiceProvider" --tag="config"   
+php artisan vendor:publish
+//php artisan vendor:publish --provider="Vendor\Neyromanser\LascaFileManager\LascaFileManagerServiceProvider" --tag="config"   

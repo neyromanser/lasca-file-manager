@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
+use Auth;
 use Config;
 
 class LascaFileManagerController extends BaseController{
@@ -15,6 +16,10 @@ class LascaFileManagerController extends BaseController{
      * @return void
      */
     public function __construct() {
+        echo Auth::check().'A';
+        if(!Auth::check()){
+            abort(503);
+        }
         //$this->kcfinder = $kcfinder;
     }
 
@@ -31,7 +36,8 @@ class LascaFileManagerController extends BaseController{
 
     public function browse(){
 
-        return 'ok';
+        echo '123';
+        return view('admin.Webiviewsapp', []);
 
         //$browser = FinderCore::browser();
         //$browser->action();

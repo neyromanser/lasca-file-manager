@@ -3,6 +3,7 @@ namespace Neyromanser\LascaFileManager;
 
 use Illuminate\Support\ServiceProvider;
 
+
 class LascaFileManagerServiceProvider extends ServiceProvider {
 
     /**
@@ -18,18 +19,33 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
             __DIR__.'/../public/' => public_path(config('lasca-file-manager.route_prefix'))
         ], 'public');
 
-
+        $this->registerRoutes();
 
         # install
         # composer require neyromanser/lasca-file-manager
         # php artisan vendor:publish --provider="Vendor\Neyromanser\LascaFileManager\LascaFileManagerServiceProvider" --tag="config"
 
         #$this->app['router']->get($glideConfig['baseURL'].'/{all}', 'Spatie\Glide\Controller\GlideImageController@index')->where('all', '.*');
+        //$this->app['router']->get('/admin/file-manager/browse', 'Neyromanser\LascaFileManager\Controller\LascaFileManagerController@browse');
 
         # $this->loadViewsFrom(__DIR__.'/path/to/views', 'courier');
         # return view('courier::view.name');
 
         //include __DIR__.'/routes.php';
+    }
+
+    public function registerRoutes(){
+        $fileManagerConfig = config('lasca-file-manager');
+
+        $this->app['router']->group([
+            'prefix' => $fileManagerConfig['route_prefix'],
+            'namespace' => 'Neyromanser\LascaFileManager\Controller',
+            //'middleware' => 'auth'
+        ], function () {
+            $this->app['router']->get("/browse", [
+            'uses' => 'LascaFileManagerController@browse'
+            ]);
+        });
     }
 
     /**
@@ -38,9 +54,9 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register(){
-        $this->mergeConfigFrom(__DIR__ . '/../config/lasca-file-manager.php', 'lasca-file-manager');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'lasca-file-manager');
 
-        $this->app->bind('lasca-file-manager', function () {
+        //$this->app->bind('lasca-file-manager', function () {
 
             /*
             $glideImage = new GlideImage();
@@ -50,7 +66,7 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
                 ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
 
             return $glideImage;*/
-        });
+        //});
 
         //parent::register();
     }

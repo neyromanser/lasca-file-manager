@@ -14,7 +14,8 @@
 $fileManagerConfig = config('lasca-file-manager');
 
 Route::group([
-    'prefix' => $fileManagerConfig['route_prefix'],
+    //'prefix' => $fileManagerConfig['route_prefix'],
+    'prefix' => 'admin/file-manager',
     'namespace' => 'Neyromanser\LascaFileManager\Controller',
     'middleware' => 'auth'
 ], function () {
