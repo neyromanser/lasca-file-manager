@@ -2,12 +2,7 @@
   "name": "neyromanser/lasca-file-manager",
   "description": "File manager",
   "homepage": "https://github.com/neyromanser/lasca-file-manager",
-  "keywords": [
-    "filemanager",
-    "file",
-    "manager",
-    "laravel"
-  ],
+  "keywords": ["filemanager", "laravel"],
   "license": "MIT",
   "authors": [
     {
@@ -16,17 +11,24 @@
     }
   ],
   "require": {
-    "illuminate/auth": "~5.1.20|5.2.*|5.3.*",
-    "illuminate/container": "~5.1.20|5.2.*|5.3.*",
-    "illuminate/contracts": "~5.1.20|5.2.*|5.3.*",
-    "illuminate/database": "~5.1.20|5.2.*|5.3.*"
+    "illuminate/auth": "~5.3",
+    "illuminate/container": "~5.3",
+    "illuminate/contracts": "~5.3",
+    "illuminate/support": "~5.3",
+    "illuminate/translation": "~5.3",
+    "illuminate/database": "~5.3",
+    "illuminate/console": "~5.3",
+    "illuminate/filesystem": "~5.3",
+    "illuminate/config": "~5.3",
+    "illuminate/routing": "~5.3",
+    "illuminate/view": "~5.3",
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0"
   },
   "autoload": {
-    "psr-0": {
-      "Neyromanser\\LascaFileManager": "src/"
+    "psr-4": {
+      "Neyromanser\\LascaFileManager\\": "src/"
     }
   },
   "minimum-stability": "stable"
