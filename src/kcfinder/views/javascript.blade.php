@@ -1,8 +1,11 @@
 
-<script src="/{{ $lascaFileConfig['route_prefix'] }}/js/index.php" type="text/javascript"></script>
-<script src="/{{ $lascaFileConfig['route_prefix'] }}/js/lang/{{ $fileManagerLang }}.js" type="text/javascript"></script>
-
-<script src="/{{ $lascaFileConfig['route_prefix'] }}/themes/{{ $lascaFileConfig['theme'] }}/js.php" type="text/javascript"></script>
+<script src="/{{ $lascaFileConfig['route_prefix'] }}/assets/js/app.js"
+        type="text/javascript"></script>
+{{-- TODO: simplify translate --}}
+<script src="/{{ $lascaFileConfig['route_prefix'] }}/js/lang/{{ $fileManagerLang }}.js"
+        type="text/javascript"></script>
+<script src="/{{ $lascaFileConfig['route_prefix'] }}/assets/themes/{{ $lascaFileConfig['theme'] }}/init.js"
+        type="text/javascript"></script>
 
 <script type="text/javascript">
 _.version = 1;

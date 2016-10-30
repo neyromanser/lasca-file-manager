@@ -14,35 +14,13 @@ class KcfinderModel{
      * @return string
      */
     static function browse(){
-
-        //$browser = "kcfinder\\browser"; // To execute core/bootstrap.php on older
-        $browser = new browser();      // PHP versions (even PHP 4)
+        $browser = new browser();
         $browser->action();
-
-        return '';
     }
 
     static function connector(){
-
-        //$browser = "kcfinder\\browser"; // To execute core/bootstrap.php on older
-        $upload = new uploader();      // PHP versions (even PHP 4)
+        $upload = new uploader();
         $upload->upload();
-
-        return '';
-    }
-
-    static function css($theme = false){
-        $min = new minifier("css");
-        //$path = public_path(Config('lasca-file-manager.route_prefix') . '/cache');
-        $path = __DIR__ . '/kcfinder/css';
-        $min->minify(Config('lasca-file-manager.route_prefix')."/cache/".($theme ? "theme_$theme" : 'base').".css", $path);
-    }
-
-    static function js($theme = false){
-        $min = new minifier("js");
-        //$path = public_path(Config('lasca-file-manager.route_prefix') . '/cache');
-        $path = __DIR__ . '/kcfinder/js';
-        $min->minify(Config('lasca-file-manager.route_prefix')."/cache/".($theme ? "theme_$theme" : 'base').".js", $path);
     }
 
     static function jsLocalize($lang){

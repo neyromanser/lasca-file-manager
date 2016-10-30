@@ -40,20 +40,6 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
         //include __DIR__.'/routes.php';
     }
 
-    public function registerRoutes(){
-        $fileManagerConfig = config('lasca-file-manager');
-
-        $this->app['router']->group([
-            'prefix' => $fileManagerConfig['route_prefix'],
-            'namespace' => 'Neyromanser\LascaFileManager\Controller',
-            'middleware' => 'auth'
-        ], function () {
-            $this->app['router']->get("/browse", [
-            'uses' => 'LascaFileManagerController@browse'
-            ]);
-        });
-    }
-
     /**
      * Register the service provider.
      *
@@ -62,17 +48,14 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
     public function register(){
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'lasca-file-manager');
 
-        //$this->app->bind('lasca-file-manager', function () {
+        $this->app->bind('lasca-file-manager', function () {
 
-            /*
-            $glideImage = new GlideImage();
+            $finder = new GlideImage();
 
-            $glideImage
-                ->setSignKey($this->getSignKey(config('laravel-glide')))
-                ->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
+            //$glideImage->setSignKey($this->getSignKey(config('laravel-glide')))->setBaseURL($this->app['config']->get('laravel-glide.baseURL'));
 
-            return $glideImage;*/
-        //});
+            return $finder;
+        });
 
         //parent::register();
     }
