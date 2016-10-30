@@ -19,11 +19,17 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
             __DIR__.'/../public/' => public_path(config('lasca-file-manager.route_prefix'))
         ], 'public');
 
-        $this->registerRoutes();
+        if (! $this->app->routesAreCached()) {
+            //require __DIR__.'/../routes.php';
+        }
+
+        $this->loadViewsFrom(__DIR__.'/kcfinder/views', 'lasca-file-manager');
+
+        //$this->registerRoutes();
 
         # install
         # composer require neyromanser/lasca-file-manager
-        # php artisan vendor:publish --provider="Vendor\Neyromanser\LascaFileManager\LascaFileManagerServiceProvider" --tag="config"
+        # php artisan vendor:publish --provider="Neyromanser\LascaFileManager\LascaFileManagerServiceProvider" --tag="config"
 
         #$this->app['router']->get($glideConfig['baseURL'].'/{all}', 'Spatie\Glide\Controller\GlideImageController@index')->where('all', '.*');
         //$this->app['router']->get('/admin/file-manager/browse', 'Neyromanser\LascaFileManager\Controller\LascaFileManagerController@browse');
@@ -40,7 +46,7 @@ class LascaFileManagerServiceProvider extends ServiceProvider {
         $this->app['router']->group([
             'prefix' => $fileManagerConfig['route_prefix'],
             'namespace' => 'Neyromanser\LascaFileManager\Controller',
-            //'middleware' => 'auth'
+            'middleware' => 'auth'
         ], function () {
             $this->app['router']->get("/browse", [
             'uses' => 'LascaFileManagerController@browse'

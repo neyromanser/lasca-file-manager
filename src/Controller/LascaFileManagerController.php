@@ -1,30 +1,27 @@
 <?php namespace Neyromanser\LascaFileManager\Controller;
 
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+use Illuminate\Routing\Controller;
+use Neyromanser\LascaFileManager\KcfinderModel;
 
-use Illuminate\Http\Request;
-use Auth;
-use Config;
+//use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\File;
+//use Illuminate\Http\Request;
+//use Config;
 
-class LascaFileManagerController extends BaseController{
+class LascaFileManagerController extends Controller{
 
     protected $kcfinder;
+
     /**
      * Create a new DreamController controller instance.
      * @return void
      */
     public function __construct() {
-        echo Auth::check().'A';
-        if(!Auth::check()){
-            abort(503);
-        }
         //$this->kcfinder = $kcfinder;
     }
 
     public function connector(){
-
+        $browser = KcfinderModel::connector();
         /*
         $config = config('ckfinder');
         $config['authentication'] = function(){return true;};
@@ -34,15 +31,32 @@ class LascaFileManagerController extends BaseController{
         */
     }
 
+    public function css(){
+        $css = KcfinderModel::css();
+    }
+
+    public function theme($theme){
+        $css = KcfinderModel::css($theme);
+    }
+
+    public function jsTheme($theme){
+        $css = KcfinderModel::js($theme);
+    }
+
+    public function js(){
+        $css = KcfinderModel::js();
+    }
+
+    public function jsLocalize($lang){
+        $css = KcfinderModel::jsLocalize($lang);
+    }
+
     public function browse(){
+        //return view('admin.Webiviewsapp', []);
 
-        echo '123';
-        return view('admin.Webiviewsapp', []);
+        $browser = KcfinderModel::browse();
 
-        //$browser = FinderCore::browser();
-        //$browser->action();
-
-        return;
+        return '';
 
         //require "core/bootstrap.php";
         $FM_CORE_PATH = public_path('admin/libs/webix/kcfinder/');

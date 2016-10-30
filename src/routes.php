@@ -1,27 +1,20 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
+//use Illuminate\Support\Facades\Route;
 
 $fileManagerConfig = config('lasca-file-manager');
 
-Route::group([
-    //'prefix' => $fileManagerConfig['route_prefix'],
-    'prefix' => 'admin/file-manager',
-    'namespace' => 'Neyromanser\LascaFileManager\Controller',
-    'middleware' => 'auth'
-], function () {
-    //Route::get('/index.html',   ['uses' => 'Admin@getAdminPage']);
+Route::group(['prefix' => $fileManagerConfig['route_prefix'], 'middleware' => 'auth'], function () {
 
-    //Route::get('/libs/webix/ckfinder/core/connector/php/connector.php',  ['uses' => 'LascaFileManagerController@connector']);
-    //Route::post('/libs/webix/ckfinder/core/connector/php/connector.php',  ['uses' => 'LascaFileManagerController@connector']);
-    Route::get('/browse',          ['uses' => 'LascaFileManagerController@browse']);
+    Route::get('/browse',        ['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@browse']);
+    Route::get('/browse.php',        ['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@browse']);
+    Route::post('/browse.php',        ['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@browse']);
+
+    Route::get('/css/index.php', ['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@css']);
+    Route::get('/themes/{theme}/css.php', ['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@theme']);
+
+    Route::get('/js/index.php',  ['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@js']);
+    Route::get('/themes/{theme}/js.php',['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@jsTheme']);
+    Route::get('/js/lang/{lang}.js',['uses'=>'\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@jsLocalize']);
+    Route::get('/upload',  ['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@connector']);
+    Route::post('/upload',  ['uses' => '\Neyromanser\LascaFileManager\Controller\LascaFileManagerController@connector']);
 });
