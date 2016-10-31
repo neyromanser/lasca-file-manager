@@ -21,10 +21,10 @@ return [
 
 // GENERAL SETTINGS
 
-    'disabled' => true,
-    'uploadURL' => "upload",
-    'uploadDir' => "",
-    'theme' => "default",
+    'disabled' => false,
+    'uploadURL' => "/img/",
+    'uploadDir' => storage_path('app'),
+    'theme' => "dark",
 
     // ROUTES
     'route_prefix' => 'admin/file-manager',
@@ -112,7 +112,7 @@ return [
 // THE FOLLOWING SETTINGS CANNOT BE OVERRIDED WITH SESSION SETTINGS
 
     '_normalizeFilenames' => false,
-    '_check4htaccess' => true,
+    '_check4htaccess' => false,
     //'_tinyMCEPath' => "/tiny_mce",
 
     '_sessionVar' => "KCFINDER",
