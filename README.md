@@ -1,7 +1,7 @@
 
 # lasca-file-manager
 
-(https://github.com/sunhater/kcfinder)[Kcfinder] adaptation as Laravel 5.3 package  
+Kcfinder [https://github.com/sunhater/kcfinder] adaptation as Laravel 5.3 package  
 
 ## Install     
 ```
@@ -21,4 +21,3 @@ Neyromanser\LascaFileManager\LascaFileManagerServiceProvider::class,
 ```  
 php artisan vendor:publish --provider="Neyromanser\LascaFileManager\LascaFileManagerServiceProvider"   
 ```
-  
